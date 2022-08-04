@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
+  useEffect(() => {
+    for (let i = 1; i < 151; i++) {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+        .then((res) => res.json())
+        .then((data) =>
+          setPokeArray((pokeArray) => [
+            ...pokeArray,
+            data.sprites.front_default,
+          ])
+        );
+    }
+  }, []);
+
+  const [poke, setPoke] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const [pokeArray, setPokeArray] = useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {pokeArray.map((pic) => {
+        return <img src={pic} />;
+      })}
     </div>
   );
 }

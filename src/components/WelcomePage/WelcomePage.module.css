@@ -2,7 +2,13 @@
     height: 400px;
     width: 500px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: red;
+}
+.logo {
+    height: auto;
+    width: auto;
+    max-width: 450px;
 }

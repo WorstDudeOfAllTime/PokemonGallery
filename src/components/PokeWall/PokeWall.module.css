@@ -1,4 +1,12 @@
 .pokeWall {
     width: 30200px;
     display: flex;
+    height: 350px;
+    background: red;
+    border-bottom: 4px solid black;
+}
+.pokeFloor {
+    width: 30200px;
+    height: 100px;
+    background: rgb(238, 238, 112);
 }
